@@ -1,0 +1,8 @@
+<ui:composition template = "/WEB-INF/template/template.xhtml"
+                xmlns = "http://www.w3.org/1999/xhtml"
+                xmlns:ui = "http://xmlns.jcp.org/jsf/facelets">
+    <ui:define name = "content">
+        <h3>#{msg.welcomeMsg}, #{signupCtrl.account.customer.firstName} #{signupCtrl.account.customer.lastName}</h3><br />
+        <p>#{msg.signupWelcome}</p>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,100 @@
+<ui:composition template = "/WEB-INF/template/userTemplate.xhtml"
+                xmlns = "http://www.w3.org/1999/xhtml"
+                xmlns:ui = "http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name= "content">
+        <f:metadata>
+            <f:viewAction action ="#{loginCtrl.onUserIndex()}" />
+        </f:metadata>
+        
+        <h:form>
+            <div>
+                <h3>#{msg.profile}</h3>
+                <h:panelGrid columns="3">
+                    <h:outputLabel value = "#{msg.signupFirstname}" for = "firstName" /> 
+                    <h:inputText id = "firstName" 
+                                 value = "#{customerCtrl.customer.firstName}" />
+                    <h:message style="color:red" for = "firstName"/>
+
+                    <h:outputLabel value = "#{msg.signupLastname}" for = "lastName" /> 
+                    <h:inputText id = "lastName" 
+                                 value = "#{customerCtrl.customer.lastName}" />
+                    <h:message style="color:red" for = "lastName"/>
+
+                    <h:outputLabel value = "#{msg.signupPassword}" for = "password" /> 
+                    <h:inputSecret id = "password" 
+                                   value = "#{userCtrl.user.password}" 
+                                   disabled = "true"
+                                   validator = "myPasswordValidator"
+                                   required="true" 
+                                   requiredMessage="#{msg.requireMessage}" 
+                                   />
+                    <h:message style="color:red" for = "password"/>
+                </h:panelGrid>
+            </div>
+            <div>
+                <h3>#{msg.contactData}</h3>
+                <h:panelGrid columns="3">
+                    <h:outputLabel value = "#{msg.signupEmail}" for = "email" /> 
+                    <h:inputText id = "email" 
+                                 value = "#{userCtrl.user.email}" 
+                                 disabled = "true"/>
+                    <h:message style="color:red" for = "email"/>
+
+                    <h:outputLabel value = "#{msg.custMobilePhone}" for = "mobilePhoneNumber" /> 
+                    <h:inputText id = "mobilePhoneNumber" 
+                                 value = "#{customerCtrl.customer.mobilePhoneNumber}"/>
+                    <h:message style="color:red" for = "email"/>
+
+                    <h:outputLabel value = "#{msg.custStreet}" for = "streetName" /> 
+                    <h:inputText id = "streetName" 
+                                 value = "#{addressCtrl.address.streetName}"/>
+                    <h:message style="color:red" for = "email"/>
+
+                    <h:outputLabel value = "#{msg.custPostalCode}" for = "postalCode" /> 
+                    <h:inputText id = "postalCode" 
+                                 value = "#{addressCtrl.address.postalCode}"/>
+                    <h:message style="color:red" for = "postalCode"/>
+
+                    <h:outputLabel value = "#{msg.custCity}" for = "city" /> 
+                    <h:inputText id = "city" 
+                                 value = "#{addressCtrl.address.city}"/>
+                    <h:message style="color:red" for = "city"/>
+
+                    <h:outputLabel value = "#{msg.custCountry}" for = "country" /> 
+                    <h:inputText id = "country" 
+                                 value = "#{addressCtrl.address.country}"/>
+                    <h:message style="color:red" for = "country"/>
+                </h:panelGrid>
+
+                <h3>#{msg.security}</h3>
+
+                <h:panelGrid columns="3">
+                    <h:outputLabel value = "#{msg.signupRecoveryEmail}" for = "recoveryEmail" /> 
+                    <h:inputText id = "recoveryEmail" 
+                                 value = "#{userCtrl.user.recoveryEmail}" 
+                                 validator = "myRecoveryEmailValidator"/> 
+                    <h:message style="color:red" for = "recoveryEmail"/>
+
+                    <h:outputLabel value = "#{msg.recoveryMobilePhoneNumber}" for = "recoveryMobilePhoneNumber" /> 
+                    <h:inputText id = "recoveryMobilePhoneNumber" 
+                                 value = "#{customerCtrl.customer.recoveryPhoneNumber}"/>
+                    <h:message style="color:red" for = "recoveryMobilePhoneNumber"/>
+                </h:panelGrid>
+            </div>
+
+            <div>
+                <h3>#{msg.language}</h3>
+                <h:selectOneMenu value ="#{languageCtrl.language}">
+                    <f:selectItems value ="#{languageCtrl.locales}" />
+                </h:selectOneMenu>
+            </div>
+
+            <h:commandButton action ="#{accountCtrl.back()}" value ="#{msg.goBack}" />
+            <h:commandButton action = "#{accountCtrl.save()}" value = "#{msg.doSave}" />
+        </h:form>
+        
+    </ui:define>
+</ui:composition>

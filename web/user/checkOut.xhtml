@@ -1,0 +1,27 @@
+<ui:composition template = "/WEB-INF/template/userTemplate.xhtml"
+                xmlns = "http://www.w3.org/1999/xhtml"
+                xmlns:ui = "http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name = "content" >
+        <f:metadata>
+            <f:viewAction action ="#{loginCtrl.onUserIndex()}" />
+        </f:metadata>
+        <h:form rendered = "#{not orderCtrl.orderEmpty}">
+            <ui:repeat var = "game" value = "#{orderCtrl.myOrder.games}">
+                <p>#{game.title}</p>
+            </ui:repeat>
+            
+            <br />    
+            <h:outputLabel value ="#{msg.price}: "/><h:outputText value = "#{orderCtrl.calculateTotalPrice()}" />
+            <br /><br />
+            <h:commandButton action="#{orderCtrl.customerDetails()}" value = "#{msg.checkOut}" />
+        </h:form>
+        
+        <h:form rendered = "#{orderCtrl.orderEmpty}">
+            <h:outputText value="#{msg.emptyShoppingCard}." />
+            <h:commandButton action="goUserIndex" value = "#{msg.backToIndex}" />
+        </h:form>
+    </ui:define>
+</ui:composition>

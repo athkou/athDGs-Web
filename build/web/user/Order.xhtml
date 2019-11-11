@@ -1,0 +1,39 @@
+<ui:composition template = "/WEB-INF/template/userTemplate.xhtml"
+                xmlns = "http://www.w3.org/1999/xhtml"
+                xmlns:ui = "http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://java.sun.com/jsf/core">
+    <ui:define name = "content" >
+        <f:metadata>
+            <f:viewAction action ="#{loginCtrl.onUserIndex()}" />
+        </f:metadata>
+        <h:form rendered = "#{orderCtrl.userWithOrders}">
+            <h3>#{msg.orderHistory}</h3>
+
+            <h:dataTable value = "#{userCtrl.user.orders}" 
+                         var = "currentOrder" 
+                         border = "2"
+                         cellspacing="1"
+                         cellpadding="1">
+                <h:column>
+                    <c:facet name = "header">#{msg.userOrderDate}</c:facet>#{currentOrder.orderDate}
+                </h:column>
+
+                <h:column>
+                    <c:facet name = "header">#{msg.userOrderTotalPrice}</c:facet>#{currentOrder.totalPrice}€
+                </h:column>
+
+                <h:column>
+                    <c:facet name = "header">#{msg.userOrderInvoice}</c:facet>
+                    <h:commandLink action = "#{orderCtrl.download(currentOrder.orderId)}"
+                                   value = "#{msg.downloadPdf}" />
+                </h:column>
+            </h:dataTable>
+        </h:form>
+        
+        <h:form rendered = "#{not orderCtrl.userWithOrders}" >
+            <h:outputText value = "#{msg.userNoOrdersMsg}" />
+        </h:form>
+    </ui:define>
+</ui:composition>

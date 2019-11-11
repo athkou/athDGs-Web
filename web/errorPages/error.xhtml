@@ -1,0 +1,13 @@
+<ui:composition template = "/WEB-INF/template/template.xhtml"
+                xmlns = "http://www.w3.org/1999/xhtml"
+                xmlns:ui = "http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <ui:define name = "content">
+        <div>
+            <h:outputText value ="#{msg.errorAuthNotPossible}" />
+        </div>
+        <div>
+            <h:button outcome="goPublicIndex" value ="#{msg.errorBackToIndex}" />
+        </div>
+    </ui:define>
+</ui:composition>

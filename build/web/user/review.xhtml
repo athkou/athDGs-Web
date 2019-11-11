@@ -1,0 +1,40 @@
+<ui:composition template = "/WEB-INF/template/userTemplate.xhtml"
+                xmlns = "http://www.w3.org/1999/xhtml"
+                xmlns:ui = "http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name = "content" >
+        <f:metadata>
+            <f:viewAction action ="#{loginCtrl.onUserIndex()}" />
+        </f:metadata>
+        <h:form rendered = "#{accountCtrl.libraryGameSelected}">
+            <h3>#{msg.review}</h3>
+            <h4>#{userReviewCtrl.game.title}</h4>
+            
+            <h:panelGrid columns="3" rendered="#{not userReviewCtrl.gameNull}">
+                <h:outputLabel value = "#{msg.supportReviewTitle}" for = "reviewTitle" /> 
+                <h:inputText id = "reviewTitle" 
+                             value = "#{userReviewCtrl.reviewTitle}" 
+                             required="true" 
+                             requiredMessage="#{msg.requireMessage}" />
+                <h:message style="color:red" for = "reviewTitle"/>
+                
+                <h:outputLabel value = "#{msg.review}" for = "reviewBody" /> 
+                <h:inputTextarea id = "reviewBody" 
+                                 value = "#{userReviewCtrl.reviewBody}" 
+                                 required="true" 
+                                 requiredMessage="#{msg.requireMessage}" />
+                <h:message style="color:red" for = "reviewBody"/>
+            </h:panelGrid>
+            
+            <h:commandButton action = "#{userReviewCtrl.cancel()}" value = "#{msg.cancel}" />
+            <h:commandButton action = "#{userReviewCtrl.library()}" value = "#{msg.postReview}" rendered = "#{not userReviewCtrl.gameNull}"/>
+        </h:form>
+        
+        <h:form rendered = "#{not accountCtrl.libraryGameSelected}">
+            <h:outputText value = "#{msg.reviewMsg}." /><br /><br />
+            <h:commandButton action = "goUserIndex" value = "#{msg.index}" />
+        </h:form>
+    </ui:define>
+</ui:composition>

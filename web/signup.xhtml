@@ -1,0 +1,54 @@
+<ui:composition template = "/WEB-INF/template/template.xhtml"
+                xmlns = "http://www.w3.org/1999/xhtml"
+                xmlns:ui = "http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <ui:define name = "content">
+        <h:outputLabel value="#{msg.signupTitle}" />
+        <h:form>
+            <h:panelGrid columns="3">
+                <h:outputLabel value = "#{msg.signupFirstname}" for = "firstName" /> 
+                <h:inputText id = "firstName" 
+                             value = "#{signupCtrl.account.customer.firstName}" 
+                             required="true" 
+                             requiredMessage="#{msg.requireMessage}" />
+                <h:message style="color:red" for = "firstName"/>
+                 
+                <h:outputLabel value = "#{msg.signupLastname}" for = "lastName" /> 
+                <h:inputText id = "lastName" 
+                             value = "#{signupCtrl.account.customer.lastName}" 
+                             required="true" 
+                             requiredMessage="#{msg.requireMessage}" />
+                 <h:message style="color:red" for = "lastName"/>
+                 
+                <h:outputLabel value = "#{msg.signupEmail}" for = "email" /> 
+                <h:inputText id = "email" 
+                             value = "#{signupCtrl.account.user.email}" 
+                             validator = "myEmailValidator"
+                             required="true" 
+                             requiredMessage="#{msg.requireMessage}" 
+                              />
+                <h:message style="color:red" for = "email"/>
+                
+                <h:outputLabel value = "#{msg.signupPassword}" for = "password" /> 
+                <h:inputSecret id = "password" 
+                               value = "#{signupCtrl.account.user.password}" 
+                               validator = "myPasswordValidator"
+                               required="true" 
+                               requiredMessage="#{msg.requireMessage}" 
+                              />
+                <h:message style="color:red" for = "password"/>
+                
+                <h:outputLabel value = "#{msg.signupPasswordConfirm}" for = "passwordConfirm" /> 
+                <h:inputSecret id = "passwordConfirm" 
+                               value = "#{signupCtrl.passwordConfirm}" 
+                               validator = "myPasswordConfirmValidator"
+                               required="true" 
+                               requiredMessage="#{msg.requireMessage}" 
+                              />
+                <h:message style="color:red" for = "passwordConfirm"/>
+                
+            </h:panelGrid>
+            <h:commandButton action = "#{signupCtrl.save()}" value = "#{msg.signupNext}" />
+        </h:form>
+    </ui:define>
+</ui:composition>

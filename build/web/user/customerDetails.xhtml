@@ -1,0 +1,64 @@
+<ui:composition template = "/WEB-INF/template/userTemplate.xhtml"
+                xmlns = "http://www.w3.org/1999/xhtml"
+                xmlns:ui = "http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name = "content" >
+        <f:metadata>
+            <f:viewAction action ="#{loginCtrl.onUserIndex()}" />
+        </f:metadata>
+        <h:form >
+            <h:panelGrid columns="3">
+                    <h:outputLabel value = "#{msg.signupFirstname}" for = "firstName" /> 
+                    <h:inputText id = "firstName" 
+                                 value = "#{customerCtrl.customer.firstName}" 
+                                 required="true" 
+                                 requiredMessage="#{msg.requireMessage}" />
+                    <h:message style="color:red" for = "firstName"/>
+
+                    <h:outputLabel value = "#{msg.signupLastname}" for = "lastName" /> 
+                    <h:inputText id = "lastName" 
+                                 value = "#{customerCtrl.customer.lastName}" 
+                                 required="true" 
+                                 requiredMessage="#{msg.requireMessage}" />
+                    <h:message style="color:red" for = "lastName"/>
+
+                    <h:outputLabel value = "#{msg.custMobilePhone}" for = "mobilePhoneNumber" /> 
+                    <h:inputText id = "mobilePhoneNumber" 
+                                 value = "#{customerCtrl.customer.mobilePhoneNumber}" 
+                                 required="true" 
+                                 requiredMessage="#{msg.requireMessage}" />
+                    <h:message style="color:red" for = "mobilePhoneNumber"/>
+
+                    <h:outputLabel value = "#{msg.custStreet}" for = "streetName" /> 
+                    <h:inputText id = "streetName" 
+                                 value = "#{addressCtrl.address.streetName}" 
+                                 required="true" 
+                                 requiredMessage="#{msg.requireMessage}" />
+                    <h:message style="color:red" for = "streetName"/>
+
+                    <h:outputLabel value = "#{msg.custPostalCode}" for = "postalCode" /> 
+                    <h:inputText id = "postalCode" 
+                                 value = "#{addressCtrl.address.postalCode}" 
+                                 required="true" 
+                                 requiredMessage="#{msg.requireMessage}" />
+                    <h:message style="color:red" for = "postalCode"/>
+
+                    <h:outputLabel value = "#{msg.custCity}" for = "city" /> 
+                    <h:inputText id = "city" 
+                                 value = "#{addressCtrl.address.city}"  
+                                 required="true" 
+                                 requiredMessage="#{msg.requireMessage}" />
+                    <h:message style="color:red" for = "city"/>
+
+                    <h:outputLabel value = "#{msg.custCountry}" for = "country" /> 
+                    <h:inputText id = "country" 
+                                 value = "#{addressCtrl.address.country}" 
+                                 required="true" 
+                                 requiredMessage="#{msg.requireMessage}" />
+                    <h:message style="color:red" for = "country"/>
+                </h:panelGrid>
+            <h:commandButton action="#{orderCtrl.paymentOptions()}" value = "#{msg.paymentMethod}" />
+        </h:form>
+    </ui:define>
+</ui:composition>

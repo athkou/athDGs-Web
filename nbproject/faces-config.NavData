@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="changePassword.xhtml" x="890" y="324" zoom="true"/>
+        <Node id="admin/orphanAccounts.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="user/Order.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="user/library.xhtml" x="258" y="673" zoom="true"/>
+        <Node id="signupPageTwo.xhtml" x="915" y="68" zoom="true"/>
+        <Node id="errorPages/error.xhtml" x="53" y="18" zoom="true"/>
+        <Node id="admin/index.xhtml" x="1171" y="490" zoom="true"/>
+        <Node id="user/paymentOptions.xhtml" x="609" y="916" zoom="true"/>
+        <Node id="user/selectedGame.xhtml" x="10" y="707" zoom="true"/>
+        <Node id="passwordReset.xhtml" x="110" y="370" zoom="true"/>
+        <Node id="user/index.xhtml" x="39" y="501" zoom="true"/>
+        <Node id="user/checkOut.xhtml" x="203" y="772" zoom="true"/>
+        <Node id="errorPages/expired.xhtml" x="1037" y="146" zoom="true"/>
+        <Node id="index.xhtml" x="144" y="302" zoom="false"/>
+        <Node id="user/review.xhtml" x="412" y="723" zoom="true"/>
+        <Node id="errorPages/errorUserNotActivated.xhtml" x="426" y="96" zoom="true"/>
+        <Node id="support/index.xhtml" x="1132" y="592" zoom="true"/>
+        <Node id="*" x="520" y="428" zoom="true"/>
+        <Node id="support/review.xhtml" x="1014" y="712" zoom="true"/>
+        <Node id="support/reportedReviews.xhtml" x="1073" y="649" zoom="true"/>
+        <Node id="VerifyRegistration.xhtml" x="72" y="416" zoom="true"/>
+        <Node id="signup.xhtml" x="828" y="240" zoom="true"/>
+        <Node id="user/userProfile.xhtml" x="34" y="634" zoom="false"/>
+        <Node id="login.xhtml" x="320" y="177" zoom="true"/>
+        <Node id="user/customerDetails.xhtml" x="342" y="844" zoom="true"/>
+        <Node id="user/browseGames.xhtml" x="23" y="573" zoom="true"/>
+        <Node id="errorPages/errorUserNotFound.xhtml" x="657" y="19" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>

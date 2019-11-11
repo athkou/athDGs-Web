@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <application>
+        <locale-config>
+            <default-locale>en</default-locale>
+            <supported-locale>en-us</supported-locale>
+            <supported-locale>de</supported-locale>
+        </locale-config>
+        
+        <message-bundle>messages</message-bundle>
+        <resource-bundle>
+            <var>msg</var>
+            <base-name>messages</base-name>
+        </resource-bundle>
+    </application>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>goToLogInPage</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>goAdminIndex</from-outcome>
+            <to-view-id>/admin/index.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>goSupportIndex</from-outcome>
+            <to-view-id>/support/index.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>goUserProfile</from-outcome>
+            <to-view-id>/user/userProfile.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>goPublicIndex</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>goUserIndex</from-outcome>
+            <to-view-id>/user/index.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>goGamesCatalog</from-outcome>
+            <to-view-id>/user/browseGames.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>goSignUp</from-outcome>
+            <to-view-id>/signup.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>goErrorPage</from-outcome>
+            <to-view-id>/errorPages/error.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>goSignupPageTwo</from-outcome>
+            <to-view-id>/signupPageTwo.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>goErrorAccountNotVerified</from-outcome>
+            <to-view-id>/errorPages/errorUserNotActivated.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>goToSelectedGame</from-outcome>
+            <to-view-id>/user/selectedGame.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>goToCheckOut</from-outcome>
+            <to-view-id>/user/checkOut.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>goToLibrary</from-outcome>
+            <to-view-id>/user/library.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>goToWriteReview</from-outcome>
+            <to-view-id>/user/review.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>goToVerifyRegistration</from-outcome>
+            <to-view-id>/VerifyRegistration.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>goToUserNotFound</from-outcome>
+            <to-view-id>/errorPages/errorUserNotFound.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>goToReportedReviews</from-outcome>
+            <to-view-id>/support/reportedReviews.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>goToSelectedReportedReview</from-outcome>
+            <to-view-id>/support/review.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>goToOrphanAccounts</from-outcome>
+            <to-view-id>/admin/orphanAccounts.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>goToOrderHistory</from-outcome>
+            <to-view-id>/user/Order.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>goToPasswordReset</from-outcome>
+            <to-view-id>/passwordReset.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>goToChangePassword</from-outcome>
+            <to-view-id>/changePassword.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/user/customerDetails.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>goToPaymentOptions</from-outcome>
+            <to-view-id>/user/paymentOptions.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/user/checkOut.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>goToCustomerDetails</from-outcome>
+            <to-view-id>/user/customerDetails.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+</faces-config>

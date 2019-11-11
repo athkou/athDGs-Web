@@ -1,0 +1,56 @@
+<ui:composition template = "/WEB-INF/template/userTemplate.xhtml"
+                xmlns = "http://www.w3.org/1999/xhtml"
+                xmlns:ui = "http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                    
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name = "content" >
+        <f:metadata>
+            <f:viewAction action ="#{loginCtrl.onUserIndex()}" />
+        </f:metadata>
+        <h:form rendered = "#{accountCtrl.gameSelected}">
+            <h3>#{accountCtrl.currentGame.title}</h3>
+            
+            <h:outputText value = "#{accountCtrl.currentGame.description}" /><br /><br />
+            <b>#{msg.price}:</b>
+            <h:outputText value = "#{accountCtrl.currentInventory.price}€" 
+                          rendered="#{accountCtrl.gameWithInventory}" /><br /><br />
+            <h:outputText value = "#{msg.priceNotFound}." 
+                          rendered="#{not accountCtrl.gameWithInventory}" />
+            
+            <h:commandButton action = "goGamesCatalog" value = "#{msg.backToGames}" />
+
+            <h:commandButton action = "#{orderCtrl.checkOut(accountCtrl.currentGame)}" 
+                             value = "#{msg.addToOrder}" 
+                             rendered = "#{accountCtrl.gameWithInventory and not accountCtrl.gameInLibrary}"/>
+
+
+            <h:commandButton action = "goToLibrary" value = "#{msg.gameInLibrary}"
+                             rendered="#{accountCtrl.gameInLibrary}"/>
+
+            <h4>#{msg.review}</h4>
+
+            <ui:repeat var ="currentReview" value="#{accountCtrl.currentGame.reviews}" >
+                <p>
+                    <b>#{currentReview.title}</b> <br />
+                    #{currentReview.userReview} <br />
+                    
+                    <h:commandButton action = "#{userReviewCtrl.report(currentReview.reviewId)}" 
+                                     value = "#{msg.reportReview}" />
+                </p>
+                <p>
+                    <h:outputText value = "#{currentReview.reasonForEdit}" rendered="#{currentReview.edited}" />
+                </p>
+                <br />
+            </ui:repeat>
+            
+        </h:form> 
+        
+        <h:form rendered = "#{not accountCtrl.gameSelected}">
+            <h3>Game not found</h3>
+            <h:outputText value = "#{msg.gameLibMsg}." />
+            <h:commandButton action = "goGamesCatalog" value = "#{msg.backToGames}" />
+        </h:form>
+    </ui:define>
+</ui:composition>

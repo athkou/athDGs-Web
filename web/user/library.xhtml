@@ -1,0 +1,43 @@
+<ui:composition template = "/WEB-INF/template/userTemplate.xhtml"
+                xmlns = "http://www.w3.org/1999/xhtml"
+                xmlns:ui = "http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://java.sun.com/jsf/core">
+    <ui:define name = "content" >
+        <f:metadata>
+            <f:viewAction action ="#{loginCtrl.onUserIndex()}" />
+        </f:metadata>
+        <h:form rendered="#{userCtrl.userWithGames}">
+            <h3>#{msg.userLibrary}</h3>
+
+            <h:dataTable value = "#{userCtrl.user.libraryGames}" 
+                         var = "currentLibraryGame" 
+                         border = "2"
+                         cellspacing="1"
+                         cellpadding="1">
+                <h:column>
+                    <c:facet name = "header">#{msg.userLibTitle}</c:facet>#{currentLibraryGame.game.title}
+                </h:column>
+
+                <h:column>
+                    <c:facet name = "header">#{msg.userLibLicense}</c:facet>#{currentLibraryGame.licenseKey}
+                </h:column>
+
+                <h:column>
+                    <c:facet name = "header">#{msg.userLibPurchase}</c:facet>#{currentLibraryGame.addedOn}
+                </h:column>
+
+                <h:column>
+                    <c:facet name = "header">#{msg.userLibRevLink}</c:facet>
+                    <h:commandLink action ="#{accountCtrl.writeReview(currentLibraryGame.game.gameId)}"
+                                   value ="#{msg.review}" />
+                </h:column>
+            </h:dataTable>
+        </h:form>
+        
+        <h:form rendered = "#{not userCtrl.userWithGames}">
+            #{msg.userLibraryNoGames}
+        </h:form>
+    </ui:define>
+</ui:composition>

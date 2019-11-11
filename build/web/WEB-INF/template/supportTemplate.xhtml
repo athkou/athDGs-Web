@@ -1,0 +1,23 @@
+<ui:composition template = "/WEB-INF/template/template.xhtml"
+                xmlns = "http://www.w3.org/1999/xhtml"
+                xmlns:ui = "http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name = "header" rendered = "#{loginCtrl.support}">
+        <hgroup>
+            <h1><u>Support-agent</u>: #{accountCtrl.fullName}</h1>
+        </hgroup>
+        <h:form>
+            <h:commandButton action = "goSupportIndex" value = "#{msg.index}" />
+            <h:commandButton action = "goToReportedReviews" value = "#{msg.reportedReviews}" />
+            <h:commandButton action = "#{loginCtrl.logout()}" value="#{msg.logOut}" class = "logout" />
+        </h:form>
+    </ui:define>
+    
+    <ui:define name = "content" rendered="#{loginCtrl.support}">
+    </ui:define>
+    
+    <ui:define name = "content" rendered="#{not loginCtrl.support}" >
+        <h:outputFormat value="#{msg.apprPermission}" />
+    </ui:define>
+</ui:composition>

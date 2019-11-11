@@ -1,0 +1,40 @@
+<ui:composition template = "/WEB-INF/template/supportTemplate.xhtml"
+                xmlns = "http://www.w3.org/1999/xhtml"
+                xmlns:ui = "http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://java.sun.com/jsf/core">
+    <ui:define name = "content" >
+        <f:metadata>
+            <f:viewAction action = "#{loginCtrl.onSupportIndex()}" />
+        </f:metadata>
+        <h:form>
+            <h3>#{msg.supportRepReviews}</h3>
+            <h:commandButton action = "#{supportReviewCtrl.populateList()}" value ="#{msg.admUpdateList}" />
+            <br /><br />
+            <h:dataTable rendered = "#{not supportReviewCtrl.reviewListEmpty}"
+                         value = "#{supportReviewCtrl.reportedReviews}" 
+                         var = "currentReview" 
+                         border = "2"
+                         cellspacing="1"
+                         cellpadding="1">
+                <h:column>
+                    <c:facet name = "header">#{msg.supportReviewTitle}</c:facet>#{currentReview.title}
+                </h:column>
+
+                <h:column>
+                    <c:facet name = "header">#{msg.supportUserReview}</c:facet>#{currentReview.userReview}
+                </h:column>
+
+                <h:column>
+                    <c:facet name = "header">#{msg.supportReviewEdit}</c:facet>
+                    <h:commandLink action ="#{supportReviewCtrl.retrieveReview(currentReview.reviewId)}"
+                                   value = "#{msg.supportReview}" />
+                </h:column>
+            </h:dataTable>
+            
+             <h:outputText rendered = "#{supportReviewCtrl.reviewListEmpty}"
+                      value ="#{msg.supportNoRepMsg}" />
+        </h:form>
+    </ui:define>
+</ui:composition>

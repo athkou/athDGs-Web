@@ -1,0 +1,15 @@
+<ui:composition template = "/WEB-INF/template/userTemplate.xhtml"
+                xmlns = "http://www.w3.org/1999/xhtml"
+                xmlns:ui = "http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name = "content" >
+        <f:metadata>
+            <f:viewAction action ="#{loginCtrl.onUserIndex()}" />
+        </f:metadata>
+        <h:form >
+            <h3>#{msg.paymentMethod}</h3>
+            <h:commandButton action="#{orderCtrl.save()}" value = "#{msg.completeOrder}" />
+        </h:form>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,25 @@
+<ui:composition template = "/WEB-INF/template/template.xhtml"
+                xmlns = "http://www.w3.org/1999/xhtml"
+                xmlns:ui = "http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <ui:define name = "content">
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel for = "username" value = "#{msg.signupEmail}"/>
+                <h:inputText id="userName" 
+                             value = "#{loginCtrl.username}" 
+                             />
+
+                <h:outputLabel for="password" value="#{msg.signupPassword}"/>
+                <h:inputSecret id="password"
+                               value="#{loginCtrl.password}"
+                               />
+            </h:panelGrid>
+
+            <div>
+                <h:commandButton action ="#{loginCtrl.login()}" value ="#{msg.logIn}" />
+                <h:commandButton action ="goToPasswordReset" value ="#{msg.userPasswordForget}" />
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>

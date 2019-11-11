@@ -1,0 +1,52 @@
+<ui:composition template = "/WEB-INF/template/supportTemplate.xhtml"
+                xmlns = "http://www.w3.org/1999/xhtml"
+                xmlns:ui = "http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name = "content" >
+        <f:metadata>
+            <f:viewAction action ="#{loginCtrl.onSupportIndex()}" />
+        </f:metadata>
+        <h:form rendered = "#{not supportReviewCtrl.reviewNull}">
+            <h:panelGrid columns="3" >
+                <h:outputLabel value = "#{msg.supportUserId}" for = "userId" /> 
+                <h:inputText id = "userId" 
+                             value = "#{supportReviewCtrl.user.userId}"
+                             disabled="true"
+                             required="true" 
+                             requiredMessage="#{msg.requireMessage}" />
+                <h:message style="color:red" for = "userId"/>
+                
+                <h:outputLabel value = "#{msg.supportReviewTitle}" for = "reviewTitle" />
+                <h:inputText id ="reviewTitle"
+                             value ="#{supportReviewCtrl.review.title}"
+                             required="true"
+                             requiredMessage="#{msg.requireMessage}" />
+                <h:message style ="color:red" for = "reviewTitle" />
+                
+                <h:outputLabel value = "#{msg.supportReview}" for = "reviewBody" /> 
+                <h:inputTextarea id = "reviewBody" 
+                                 value = "#{supportReviewCtrl.review.userReview}" 
+                                 required="true" 
+                                 requiredMessage="#{msg.requireMessage}" />
+                <h:message style="color:red" for = "reviewBody"/>
+                
+                <h:outputLabel value ="#{msg.supportReasonForEdit}" for ="reasonForEdit" />
+                <h:inputText id = "reasonForEdit"
+                             value = "#{supportReviewCtrl.reasonForEdit}"
+                             required = "true"
+                             requiredMessage = "#{msg.requireMessage}" />
+                <h:message style = "color:red" for = "reasonForEdit" />
+            </h:panelGrid>
+            
+            <h:commandButton action = "#{supportReviewCtrl.cancel()}" value = "#{msg.supportReviewCancel}" />
+            <h:commandButton action = "#{supportReviewCtrl.edit()}" value = "#{msg.supportReviewEdit}" />
+        </h:form>
+        
+        <h:form rendered = "#{supportReviewCtrl.reviewNull}" >
+            <h:outputText value = "#{msg.supportRepMsg}" /><br /><br />
+            <h:commandButton action = "goToReportedReviews" value = "#{msg.supportGotoReportedReviews}" />
+        </h:form>
+    </ui:define>
+</ui:composition>

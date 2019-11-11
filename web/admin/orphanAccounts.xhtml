@@ -1,0 +1,52 @@
+<ui:composition template = "/WEB-INF/template/adminTemplate.xhtml"
+                xmlns = "http://www.w3.org/1999/xhtml"
+                xmlns:ui = "http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://java.sun.com/jsf/core">
+    <ui:define name = "content" >
+        <f:metadata>
+            <f:viewAction action ="#{loginCtrl.onAdminIndex()}" />
+        </f:metadata>
+        <h:form rendered = "#{not orphanAccountCtrl.orphanListEmpty}">
+            <h:commandButton action = "#{orphanAccountCtrl.populateOrphanAccounts()}"
+                             value = "#{msg.admUpdateList}" />
+            
+            <h:dataTable var = "currentOrphanAccount"
+                         value = "#{orphanAccountCtrl.orphanAccounts}"
+                         border = "2"
+                         cellspacing= "1"
+                         cellpadding="1">
+                <h:column>
+                    <c:facet name = "header">#{msg.admUserId}</c:facet>#{currentOrphanAccount.user.userId}
+                </h:column>
+                <h:column>
+                    <c:facet name = "header">#{msg.admCustName}</c:facet>#{currentOrphanAccount.customer.firstName} #{currentOrphanAccount.customer.lastName}
+                </h:column>
+                <h:column>
+                    <c:facet name = "header">#{msg.admAccRole}</c:facet>#{currentOrphanAccount.user.appRole}
+                </h:column>
+                <h:column>
+                    <c:facet name = "header">#{msg.admAccCreatedOn}</c:facet>#{currentOrphanAccount.activation.createdOn}
+                </h:column>
+                <h:column>
+                    <c:facet name = "header">#{msg.admAccOrphanDate}</c:facet>#{currentOrphanAccount.orphanAccountDate}
+                </h:column>
+                <h:column>
+                    <c:facet name = "header">#{msg.admAction}</c:facet>
+                    <h:commandLink action ="#{orphanAccountCtrl.activate(currentOrphanAccount.activation.activationId)}" 
+                                   value = "#{msg.admActivate}" /> | 
+                    <h:commandLink action = "#{orphanAccountCtrl.delete(currentOrphanAccount.activation.activationId)}"
+                                   value = "#{msg.admDelete}" />
+                </h:column>
+            </h:dataTable>
+        </h:form>
+        
+        <h:form rendered = "#{orphanAccountCtrl.orphanListEmpty}" >
+            <h:commandButton action = "#{orphanAccountCtrl.populateOrphanAccounts()}"
+                             value = "#{msg.admUpdateList}" />
+            <h:outputText value = "#{msg.admNoOrphanAcc}" />
+        </h:form>
+        
+    </ui:define>
+</ui:composition>
